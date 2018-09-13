@@ -1,0 +1,35 @@
+<div class="row mb-5">
+  <div class="col-3 border-right">
+    {{> sideNav active}}
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab">
+        <div id="create-order" class="row">
+          <div class="col-6">
+            {{#each plates}}
+              <button type="button" class="food-item btn btn-primary btn-block mb-3 py-3 text-uppercase">{{this.name}}</button>
+            {{/each}}
+          </div>
+          <div class="col-6">
+            <div class="card mb-4 shadow border-0">
+              <div class="card-body px-4">
+                <h2 class="card-title">Order</h2>
+                <table class="table table-striped">
+                  <tbody id="createOrderItems">
+                  </tbody>
+                </table>
+                <button id="placeOrder" type="button" class="btn btn-success btn-block mt-4"><i class="fas fa-angle-double-right fa-2x"></i></i><br>Place Order</button>
+              </div>
+            </div>
+            <hr>
+            <form id="customItem">
+              <input id="customItemInput" class="form-control form-control-lg" type="text" placeholder="Custom Item">
+              <button id="addCustomItem" class="btn btn-primary btn-block mt-3 py-3" type="button" name="button">Add Item</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
