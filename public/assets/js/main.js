@@ -34,7 +34,6 @@ $("#placeOrder").on("click", function(){
 
   $.post("/api/place", placeOrder, function(){
     $("#createOrderItems").empty();
-    getOutstanding();
   });
 });
 
@@ -45,15 +44,7 @@ $(".completeOrder").on("click", function(){
   });
 });
 
-function getOutstanding() {
-  $.get("/api/outstanding/" + localStorage.getItem("user_id"), function(res){
-    $("#outstandingBadge").text(res.length);
-  });
-}
-
 $(function(){
-
-  getOutstanding();
 
   if (!localStorage.getItem("user_id")) {
     var id = "";

@@ -1,14 +1,13 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+// Import the ORM to create functions that will interact with the database.
+var orm = require("../config/orm.js");
 
-var Plate = sequelize.define("plate", {
-  name: {
-    type: Sequelize.STRING
+var plate = {
+  all: function(cb) {
+    orm.all("plates", function(res) {
+      cb(res);
+    });
   }
-}, {
-  timestamps: false
-});
+};
 
-Plate.sync();
-
-module.exports = Plate;
+// Export the database functions for the controller (catsController.js).
+module.exports = plate;

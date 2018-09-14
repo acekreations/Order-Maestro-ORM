@@ -17,4 +17,4 @@ if (process.env.JAWSDB_URL) {
 
 
 // Exporting our connection
-module.exports = sequelize;
+module.exports = connection;

@@ -1,5 +1,3 @@
-USE order_maestro_db;
-
 INSERT INTO plates(name) VALUES("Burger");
 INSERT INTO plates(name) VALUES("Burger - Cheese");
 INSERT INTO plates(name) VALUES("Burger - Deluxe");
