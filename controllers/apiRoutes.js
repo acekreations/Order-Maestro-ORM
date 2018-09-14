@@ -11,43 +11,12 @@ router.post("/place", function(req, res){
   order.create(cols, vals, function(data){
     res.json(data);
   });
-
-
-  //   {
-  //   user_id: req.body.userId,
-  //   items: req.body.items
-  // }).then(function(data){
-  //   res.json(data);
-  // });
 });
 
-// router.post("/complete", function(req, res){
-//   order.update(
-//     {
-//       completed: true
-//     },
-//     {
-//       where: {
-//         id: req.body.id
-//       }
-//     }
-//   ).then(function(data){
-//     res.json(data);
-//   });
-// });
-//
-// router.get("/outstanding/:id", function(req, res){
-//   order.all({
-//     where: {
-//       user_id: req.params.id,
-//       completed: false
-//     },
-//     order: [
-//       ['id', 'ASC'],
-//     ],
-//   }).then(function(orders){
-//     res.json(orders);
-//   });
-// });
+router.post("/complete", function(req, res){
+  order.update(req.body.id, "complete", true, function(data){
+    res.json(data);
+  });
+});
 
 module.exports = router;

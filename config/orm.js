@@ -1,7 +1,5 @@
-// Import MySQL connection.
 var connection = require("../config/connection.js");
 
-// Object for all our SQL statement functions.
 var orm = {
   all: function(table, cb) {
     var query = "SELECT * FROM " + table + ";";
@@ -13,7 +11,7 @@ var orm = {
     });
   },
   allWhere: function(table, col, target, cb) {
-    var query = "SELECT * FROM " + table + " WHERE " + col + " = '" + target + "';";
+    var query = "SELECT * FROM " + table + " WHERE " + col + " = '" + target + "' AND complete = false;";
     connection.query(query, function(err, result) {
       if (err) {
         throw err;
@@ -27,7 +25,18 @@ var orm = {
     console.log(cols, vals);
     var query = "INSERT INTO " + table + "(" + cols + ") VALUES(" + vals + ")";
 
-    connection.query(query, vals, function(err, result) {
+    connection.query(query, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  update: function(table, id, col, val, cb) {
+    var query = "UPDATE " + table + " SET " + col + " = " + val + " WHERE id = " + id + ";";
+
+    connection.query(query, function(err, result) {
       if (err) {
         throw err;
       }
@@ -37,5 +46,4 @@ var orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
 module.exports = orm;

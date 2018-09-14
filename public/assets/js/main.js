@@ -58,7 +58,4 @@ $(function(){
   var newOutstandingLink = "/outstanding/" + localStorage.getItem("user_id");
   $("#outstanding-link").attr("href", newOutstandingLink);
 
-  var newCompletedLink = "/completed/" + localStorage.getItem("user_id");
-  $("#completed-link").attr("href", newCompletedLink);
-
 });
